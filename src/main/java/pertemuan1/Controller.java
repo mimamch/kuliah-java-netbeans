@@ -113,7 +113,7 @@ public class Controller {
         try {
             String simpan = "UPDATE barang SET namaBarang='"+barang.getNamaBarang()+"',"
                     + "hargaBarang = '"+barang.getHargaBarang()+"',"
-                    + "jumlahBarang = '"+barang.getJumlahBarang()+"',"
+                    + "jumlahBarang = '"+barang.getJumlahBarang()+"'"
                     + "WHERE kodeBarang = '"+barang.getKodeBarang()+"'";
             sta = koneksi.createStatement();
             int save = sta.executeUpdate(simpan);
@@ -124,6 +124,17 @@ public class Controller {
         }
     }
     
+     public void hapusBarang(Model_barang barang){
+        try {
+            String simpan = "DELETE FROM barang WHERE kodeBarang = '"+barang.getKodeBarang()+"'";
+            sta = koneksi.createStatement();
+            int save = sta.executeUpdate(simpan);
+            JOptionPane.showMessageDialog(null, "Berhasil Mengapus Data!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Gagal Menyimpan" + e);
+            e.printStackTrace();
+        }
+    }
     
     
 }
